@@ -28,7 +28,7 @@ app.get('/usuario', function (req, res) {
                 res.json({
                     IsError: !1,
                     Message: "Users found " + usuarios.length,
-                    Cuanteo: conteo,
+                    Conteo: conteo,
                     Data: usuarios
                 });
             });
