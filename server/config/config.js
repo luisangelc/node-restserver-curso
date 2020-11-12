@@ -33,3 +33,8 @@ else
 // user: strider
 // pwd: 123456
 process.env.URLDB = urlDB;
+
+// =======================
+// Google Client ID
+// =======================
+process.env.CLIENT_ID = process.env.CLIENT_ID || '457728993633-oimko817spu6ao869jmd3s2rh60f30lo.apps.googleusercontent.com';
