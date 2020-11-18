@@ -4,13 +4,13 @@ const _ = require('underscore');
 
 const Usuario = require('../models/usuario');
 const { 
-    varificarToken, 
+    verificarToken, 
     verificaAdmin_Role 
 } = require('../middlewares/autenticacion');
 
 const app = express();
 
-app.get('/usuario', /*middleware*/varificarToken, (req, res) => {
+app.get('/usuario', /*middleware*/verificarToken, (req, res) => {
     let desde = req.query.desde || 0;
     desde = Number(desde);
 
@@ -38,7 +38,7 @@ app.get('/usuario', /*middleware*/varificarToken, (req, res) => {
         });
 });
 
-app.post('/usuario', [varificarToken, verificaAdmin_Role], function (req, res) {
+app.post('/usuario', [verificarToken, verificaAdmin_Role], function (req, res) {
     let body = req.body;
     let usuario = new Usuario({
         nombre: body.nombre,
@@ -67,7 +67,7 @@ app.post('/usuario', [varificarToken, verificaAdmin_Role], function (req, res) {
     });
 });
 
-app.put('/usuario/:id', [varificarToken, verificaAdmin_Role], function (req, res) {
+app.put('/usuario/:id', [verificarToken, verificaAdmin_Role], function (req, res) {
     let id = req.params.id;
     let body = _.pick(req.body, ['nombre', 'email', 'img', 'role', 'estado']);
 
@@ -87,7 +87,7 @@ app.put('/usuario/:id', [varificarToken, verificaAdmin_Role], function (req, res
     });
 });
 
-app.delete('/usuario/:id', [varificarToken, verificaAdmin_Role], function (req, res) {
+app.delete('/usuario/:id', [verificarToken, verificaAdmin_Role], function (req, res) {
     let id = req.params.id;
     Usuario.findByIdAndRemove(id, (err, usuarioBorrado) => {
         if (err) {
@@ -110,7 +110,7 @@ app.delete('/usuario/:id', [varificarToken, verificaAdmin_Role], function (req, 
     });
 });
 
-app.delete('/usuariolgc/:id', [varificarToken, verificaAdmin_Role], function (req, res) {
+app.delete('/usuariolgc/:id', [verificarToken, verificaAdmin_Role], function (req, res) {
     let id = req.params.id;
     let cambiaEstado = { estado: false };
 
