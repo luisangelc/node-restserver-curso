@@ -9,6 +9,9 @@
     <meta name="google-signin-client_id" content="457728993633-oimko817spu6ao869jmd3s2rh60f30lo.apps.googleusercontent.com">
 </head>
 <body>
+
+    <!-- <img src="http://localhost:3000/imagen/usuarios/5fa0eae388603f09acb08c06-268.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJBRE1JTl9ST0xFIiwiZXN0YWRvIjp0cnVlLCJnb29nbGUiOnRydWUsIl9pZCI6IjVmYTBlYWUzODg2MDNmMDlhY2IwOGMwNiIsIm5vbWJyZSI6Imx1aXMgYW5nZWwgY2FzdGlsbG8gciIsImVtYWlsIjoidGVzdDFAZ21haWwuY29tIiwiX192IjowLCJpbWciOiI1ZmEwZWFlMzg4NjAzZjA5YWNiMDhjMDYtMjY4LmpwZyJ9LCJpYXQiOjE2MDU3Njc2NjIsImV4cCI6MTYwNTk0MDQ2Mn0.0qK2hTeV462YsHq7NciOywMG0I2jmoyKAdwjGYGQz70" alt="" width="300px" height="300px"> -->
+
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
     <br>
     <a href="#" onclick="signOut();">Sign out</a>
@@ -24,7 +27,6 @@
             console.info('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 
             var id_token = googleUser.getAuthResponse().id_token;
-console.log(id_token);
             var xhr = new XMLHttpRequest();
             xhr.open('POST', '/google');
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -32,7 +34,6 @@ console.log(id_token);
                 console.log('Signed in as: ' + xhr.responseText);
             };
             xhr.send('idtoken=' + id_token);
-debugger
             // document.getElementById("test").innerHTML = profile.getId() + "<br>" + profile.getName() + "<br>" + profile.getImageUrl() + "<br>" + profile.getEmail()
             //     + '<br> TOKEN: <br>' + id_token;
         }
